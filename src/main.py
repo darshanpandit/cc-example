@@ -18,8 +18,8 @@ def tokenize(tweet):
             yield token
 
 def main():
-    input_directory = r'..\tweet_input'
-    output_directory = r'..\tweet_output'
+    input_directory = r'tweet_input'
+    output_directory = r'tweet_output'
 
     ft2 = open(os.path.join(output_directory, 'ft2.txt'),'w')
 
