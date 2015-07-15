@@ -21,11 +21,10 @@ def main():
     input_directory = r'tweet_input'
     output_directory = r'tweet_output'
 
+    #filehandler to feature2 , aka, streaming-median
     ft2 = open(os.path.join(output_directory, 'ft2.txt'),'w')
-
     #To maintain median calculation
     smc = Streaming_median_calculator()
-
 
     '''We assume that all the unique words in corpus can fit in Primary Memory
     Complex Postings Lists are distributed and spill to disks when needed.
@@ -45,13 +44,13 @@ def main():
         #emit unique word-length of the tweet
         ft2.write(str(smc.push(len(list(local_cnt))))+'\n')
 
-
         #reset local_cnt to empty
         local_cnt.clear()
 
-    #First Feature
+    #First Feature aka, Word Counts
     #If the datastructure gets very large, we can also dump it unsorted into a file on disk and then perform infile sorting.
     posting_list = sorted(dict(global_cnt).items())
+
     ft1 = open(os.path.join(output_directory, 'ft1.txt'),'w')
     ft1.writelines('{0}\t{1}\n'.format(token,count) for token, count in posting_list )
     ft1.close()

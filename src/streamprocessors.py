@@ -15,6 +15,7 @@ class MinHeap(object):
     def __str__(self):
         return str(self.heap)
 
+#Can extend MinHeap to make the code better.
 class MaxHeap(object):
     def __init__(self):
         self.heap = []
@@ -37,6 +38,7 @@ class Streaming_median_calculator:
         self.maxheap = MaxHeap()
         self.median = 0
 
+#Adds a value, and returns the resulting median
     def push(self, value):
         diff = len(self.maxheap)-len(self.minheap)
         if diff>0:
